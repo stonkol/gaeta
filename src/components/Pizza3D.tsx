@@ -1,18 +1,19 @@
-// src/components/Pizza3D.tsx
 import React, { useRef, useState, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
+// @ts-ignore
 import * as THREE from 'three';
 import { PizzaType, IndividualTopping } from '../types';
 import { DoughType } from '../App';
 
 // PizzaModel component that will be rendered inside Canvas
 const PizzaModel: React.FC<{
-  doughHeight: number;
-  toppings: IndividualTopping[];
-}> = ({ doughHeight, toppings }) => {
+    doughHeight: number;
+    pizzaType?: string; // Add pizzaType prop
+    toppings: IndividualTopping[];
+}> = ({ doughHeight, pizzaType = '', toppings }) => {
     // Move ref declaration first
     const pizzaRef = useRef<THREE.Object3D>(null!);
-    
+
     // Create a scene-wide rotation effect
     useFrame(({ clock }) => {
         if (pizzaRef.current) {
@@ -55,73 +56,76 @@ const PizzaModel: React.FC<{
             {/* Pizza crust with improved material */}
             <mesh position={[0, doughHeight / 2, 0]} receiveShadow castShadow>
                 <cylinderGeometry args={[3, 3.2, doughHeight, 32]} />
-                <meshPhysicalMaterial 
-                    color="#f0d080" 
-                    roughness={0.8} 
+                <meshPhysicalMaterial
+                    color='#f0d080'
+                    roughness={0.8}
                     metalness={0.1}
                     clearcoat={0.2}
                     clearcoatRoughness={0.4}
                 />
             </mesh>
-            
+
             {/* Pizza base (optional darker bottom) */}
             <mesh position={[0, 0, 0]} receiveShadow castShadow>
                 <cylinderGeometry args={[3.2, 3.2, 0.05, 32]} />
-                <meshStandardMaterial color="#c09060" />
+                <meshStandardMaterial color='#c09060' />
             </mesh>
-            
+
             {/* Pizza top (sauce or cheese layer) */}
             <mesh position={[0, doughHeight + 0.01, 0]} receiveShadow>
                 <cylinderGeometry args={[2.9, 2.9, 0.02, 32]} />
-                <meshStandardMaterial 
-                    color={pizzaType === 'Margherita' || pizzaType === 'Quattro Formaggi' ? "#ffeebb" : "#dd3311"} 
+                <meshStandardMaterial
+                    color={
+                        pizzaType === 'Margherita' || pizzaType === 'Quattro Formaggi'
+                            ? '#ffeebb'
+                            : '#dd3311'
+                    }
                     roughness={0.6}
                 />
             </mesh>
 
             {/* Toppings */}
-            {toppings.map(({ name, quantity }, index) => (
-                {/* Generate toppings in a circular pattern */}
-                {(() => {
-                    // Calculate position on a circle for more realistic pizza topping distribution
-                    const angle = (index / toppings.length) * Math.PI * 2;
-                    const radius = 2.5 * Math.random() * 0.8; // Random radius but not too close to edge
-                    const x = Math.cos(angle) * radius;
-                    const z = Math.sin(angle) * radius;
-                    
-                    return (
-                        <mesh
-                            key={index}
-                            position={[
-                                x + (Math.random() - 0.5) * 1.0, // Add some randomness
-                                doughHeight + 0.05,
-                                z + (Math.random() - 0.5) * 1.0,
-                            ]}
-                            rotation={[
-                                Math.random() * Math.PI, // Random rotation for variety
-                                Math.random() * Math.PI,
-                                Math.random() * Math.PI,
-                            ]}
-                            castShadow
-                            receiveShadow
-                        >
-                            {/* Use a flatter geometry for certain toppings */}
-                            {name.toLowerCase().includes('cheese') || 
-                             name.toLowerCase().includes('sauce') ? (
-                                <cylinderGeometry args={[0.2 * quantity, 0.2 * quantity, 0.05, 8]} />
-                            ) : (
-                                <sphereGeometry args={[0.15 * quantity, 8, 8]} />
-                            )}
-                            <meshPhysicalMaterial 
-                                color={getToppingColor(name)} 
-                                roughness={0.7}
-                                clearcoat={0.1}
-                                metalness={0.1}
+            {toppings.map((topping, index) => {
+                // Calculate position on a circle for more realistic pizza topping distribution
+                const angle = (index / toppings.length) * Math.PI * 2;
+                const radius = 2.5 * Math.random() * 0.8; // Random radius but not too close to edge
+                const x = Math.cos(angle) * radius;
+                const z = Math.sin(angle) * radius;
+
+                return (
+                    <mesh
+                        key={index}
+                        position={[
+                            x + (Math.random() - 0.5) * 1.0, // Add some randomness
+                            doughHeight + 0.05,
+                            z + (Math.random() - 0.5) * 1.0,
+                        ]}
+                        rotation={[
+                            Math.random() * Math.PI, // Random rotation for variety
+                            Math.random() * Math.PI,
+                            Math.random() * Math.PI,
+                        ]}
+                        castShadow
+                        receiveShadow
+                    >
+                        {/* Use a flatter geometry for certain toppings */}
+                        {topping.name.toLowerCase().includes('cheese') ||
+                        topping.name.toLowerCase().includes('sauce') ? (
+                            <cylinderGeometry
+                                args={[0.2 * topping.quantity, 0.2 * topping.quantity, 0.05, 8]}
                             />
-                        </mesh>
-                    );
-                })()}
-            ))}
+                        ) : (
+                            <sphereGeometry args={[0.15 * topping.quantity, 8, 8]} />
+                        )}
+                        <meshPhysicalMaterial
+                            color={getToppingColor(topping.name)}
+                            roughness={0.7}
+                            clearcoat={0.1}
+                            metalness={0.1}
+                        />
+                    </mesh>
+                );
+            })}
         </group>
     );
 };
@@ -265,24 +269,24 @@ const Pizza3D: React.FC<Pizza3DProps> = ({ doughType, pizzaType, toppings }) => 
                         </div>
                     }
                 >
-                    <Canvas 
+                    <Canvas
                         shadows
-                        camera={{ 
+                        camera={{
                             position: [0, 6, 10], // Positioned for 30-degree downward angle
-                            fov: 40, 
+                            fov: 40,
                             near: 0.1,
-                            far: 100
+                            far: 100,
                         }}
                     >
                         {/* Ambient light for general illumination */}
                         <ambientLight intensity={0.3} />
-                        
+
                         {/* Main light source with shadows */}
-                        <directionalLight 
-                            position={[5, 10, 5]} 
-                            intensity={1.5} 
-                            castShadow 
-                            shadow-mapSize-width={1024} 
+                        <directionalLight
+                            position={[5, 10, 5]}
+                            intensity={1.5}
+                            castShadow
+                            shadow-mapSize-width={1024}
                             shadow-mapSize-height={1024}
                             shadow-camera-far={50}
                             shadow-camera-left={-10}
@@ -290,21 +294,21 @@ const Pizza3D: React.FC<Pizza3DProps> = ({ doughType, pizzaType, toppings }) => 
                             shadow-camera-top={10}
                             shadow-camera-bottom={-10}
                         />
-                        
+
                         {/* Secondary light for better volume */}
                         <pointLight position={[-5, 5, -5]} intensity={0.5} />
-                        
+
                         {/* Warm front light to highlight pizza details */}
-                        <spotLight 
-                            position={[0, 8, 15]} 
-                            angle={0.3} 
-                            penumbra={0.8} 
-                            intensity={1.2} 
+                        <spotLight
+                            position={[0, 8, 15]}
+                            angle={0.3}
+                            penumbra={0.8}
+                            intensity={1.2}
                             castShadow
                         />
-                        
+
                         <PizzaModel doughHeight={doughHeight} toppings={toppings} />
-                        
+
                         {/* Simple floor plane to catch shadows */}
                         <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -1, 0]} receiveShadow>
                             <planeGeometry args={[50, 50]} />
