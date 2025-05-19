@@ -4,12 +4,7 @@
 ![pizza.gif]()
 </div>
 
-A selection and checkout menu Pizzeria website. It displays a draggable dynamic low-poly 3D pizza. it wiil diplays the dough, ingredients and sides in 3D according to the pizza chossen by the user. Using React with [TypeScript](https://www.typescriptlang.org/) and [React Three Fiber](https://r3f.docs.pmnd.rs/getting-started/introduction).
-
-## User Journey
-
-1. Select one out of five types of pizzas. (Marinara, Margherita, Diavola, Quattro Formaggi, Siciliana)
-2. select dough (sour, thin or thick)
+A selection and checkout menu Pizzeria website. It displays a draggable dynamic low-poly 3D pizza. it will display the dough, ingredients and sides in 3D according to the pizza chosen by the user. Using React with [TypeScript](https://www.typescriptlang.org/) and [React Three Fiber](https://r3f.docs.pmnd.rs/getting-started/introduction).
 
 ## Information
 
@@ -18,19 +13,27 @@ A selection and checkout menu Pizzeria website. It displays a draggable dynamic 
 3. the flavour, saltiness, spicyness. Represented in pie chart
 4. ingredients list (each item having and add or minus button). And an add button to add more ingredients    what do you thing about this page? anything i can improve? do i need react or with typescript/js will work
 
-## User Journey 
+## techs
+
+### Manage State and User Interaction
+- Use React state (useState) and effects (useEffect) to track user selections (pizza type, dough, toppings, drinks, order details).
+- Update the 3D pizza model dynamically based on state.
+- Calculate and display dynamic price and flavor charts.
+-Add forms for order details and confirmation screens.
+
+## User Journey
 1. Select pizza or Combo
 2. Select one out of five types of pizzas:
   3. Marinara, Margherita, Diavola, Quattro Formaggi, Siciliana
 4. Select dough (sour, thin or thick)
-  5. If it is combo it will let you choose the drinks. (San Pelegrino, 
+  5. If it is combo it will let you choose the drinks. (San Pelegrino,
 4. Choose Dine In, Take away, Delivery
   1. Dine In: Input date to reserve, name and phone
-  2. Take away: Input Date, name, phone 
+  2. Take away: Input Date, name, phone
   3. Delivery: Input name, phone, adress
 5. A success confirmation page is shown
    - with a button for add another order
-  
+
 ## Features
 
 - Include accessibility features for users with disabilities.
