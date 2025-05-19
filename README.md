@@ -4,10 +4,7 @@
 ![pizza.gif]()
 </div>
 
-A web page using [three.js] to display a 3d pizza object that will be rotating slowly and depending of which pizaa the user choose will have different topping which will be reflected on the pizza 3d objects, also depending on the dough it will have a thin and thick, which will chagne the 3d pizza dough.
-
-Pizza restaurant selection menu using THREE.js. A draggable dynamic low-poly 3D pizza.  
-Using React with [TypeScript](https://www.typescriptlang.org/) and [React Three Fiber](https://r3f.docs.pmnd.rs/getting-started/introduction)
+A selection and checkout menu Pizzeria website. It displays a draggable dynamic low-poly 3D pizza. it wiil diplays the dough, ingredients and sides in 3D according to the pizza chossen by the user. Using React with [TypeScript](https://www.typescriptlang.org/) and [React Three Fiber](https://r3f.docs.pmnd.rs/getting-started/introduction).
 
 ## User Journey
 
