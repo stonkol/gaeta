@@ -29,7 +29,10 @@ A selection and checkout menu Pizzeria website. It displays a draggable dynamic 
 3. let you add or remove toppings
 4. Add a drinks. (San Pelegrino, San Pelegrino Limonata, San Pelegrino Aranciata, Moretti Beer, Italian Water, Aperol Spritz)
 5. Buttons for Add another pizza or Checkout
-6. Checkout: Choose Dine In or Take away
+6. chose orderType:
+   - Dine In: reservationTime, numberPeople, name, phone, email
+   - Take away: reservationTime, name, phone, email
+
 7. A success confirmation overlay page is shown
    - with a button for add more orders and you will receive an email with the receipt.
 
@@ -48,6 +51,12 @@ Multiple pizzas: will be displayed on top of the current one.
 
 ## Pizza Types
 
+### Marinara
+Tomato sauce, garlic, oregano, and olive oil - one of the oldest pizzas, without cheese.
+
+### Margherita
+Tomato sauce, mozzarella, basil, and olive oil - the classic pizza representing the Italian flag.
+
 ### Diavola
 Tomato, mozzarella, and spicy salami (Italian pepperoni).
 
@@ -56,12 +65,6 @@ Thick, focaccia-like crust topped with tomato sauce, onions, oregano, cheese, an
 
 ### Quattro Formaggi (Four Cheese)
 Combines mozzarella, gorgonzola, fontina, and parmesan cheeses.
-
-### Marinara
-Tomato sauce, garlic, oregano, and olive oil - one of the oldest pizzas, without cheese.
-
-### Margherita
-Tomato sauce, mozzarella, basil, and olive oil - the classic pizza representing the Italian flag.
 
 ## the naming
 
