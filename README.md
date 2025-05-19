@@ -13,6 +13,27 @@ pizza selection menu using THREE.js. A draggable dynamic low-poly pizza.
 3. the flavour, saltiness, spicyness. Represented in pie chart
 4. ingredients list (each item having and add or minus button). And an add button to add more ingredients
 
+## Features
+
+- Include accessibility features for users with disabilities.
+- Preview combos with drink options visually and a summary.
+## the pizzas
+
+### Diavola
+Tomato, mozzarella, and spicy salami (Italian pepperoni).
+
+### Pizza Siciliana (Sfincione)
+Thick, focaccia-like crust topped with tomato sauce, onions, oregano, cheese, and anchovies.
+
+### Quattro Formaggi (Four Cheese)
+Combines mozzarella, gorgonzola, fontina, and parmesan cheeses.
+
+### Marinara
+Tomato sauce, garlic, oregano, and olive oil - one of the oldest pizzas, without cheese.
+
+### Margherita
+Tomato sauce, mozzarella, basil, and olive oil - the classic pizza representing the Italian flag.
+
 ## the naming
 
 The earliest known use of the word "pizza" dates back to May 997 CE in a Latin document from **Gaeta**, then part of the Byzantine Empire. It records a tenant owing the bishop twelve pizzas, a pork shoulder, and kidney each Christmas, plus twelve pizzas and a couple of chickens each Easter Sunday.
