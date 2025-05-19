@@ -1,6 +1,10 @@
-# gaeta
+<div align="center">
+<h1>Gaeta</h1>
 
-Pizza restaurant selection menu using THREE.js. A draggable dynamic low-poly 3D pizza.
+![pizza.gif]()
+</div>
+
+Pizza restaurant selection menu using THREE.js. A draggable dynamic low-poly 3D pizza.  
 Using React with [TypeScript](https://www.typescriptlang.org/) and [React Three Fiber](https://r3f.docs.pmnd.rs/getting-started/introduction)
 
 ## User Journey
