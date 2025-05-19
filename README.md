@@ -1,5 +1,7 @@
 # gaeta
-pizza selection menu using THREE.js. A draggable dynamic low-poly pizza.
+
+Pizza restaurant selection menu using THREE.js. A draggable dynamic low-poly 3D pizza.
+Using React with [TypeScript](https://www.typescriptlang.org/) and [React Three Fiber](https://r3f.docs.pmnd.rs/getting-started/introduction)
 
 ## User Journey
 
@@ -16,7 +18,10 @@ pizza selection menu using THREE.js. A draggable dynamic low-poly pizza.
 ## Features
 
 - Include accessibility features for users with disabilities.
-- Preview combos with drink options visually and a summary.
+- Preview combos with drink options visually and a summary. Animate topping changes by swapping or adding/removing 3D objects representing ingredients dynamically.
+- Save user preferences or past orders for quicker repeat ordering.
+- Add tooltips or info icons explaining dough types and toppings.
+
 ## the pizzas
 
 ### Diavola
