@@ -6,6 +6,10 @@
 
 A selection and checkout menu for a Pizzeria website. It displays a draggable, dynamic low-poly 3D pizza that visually represents the dough, ingredients, and sides according to the pizza chosen by the user. Built using React with [TypeScript](https://www.typescriptlang.org/) and [React Three Fiber](https://r3f.docs.pmnd.rs/getting-started/introduction), along with Vite and pnpm.
 
+<div align="center">
+<img src="assets/prev.jpg" width="66%">
+</div>
+
 ## Information
 
 1. A visual 3D pizza with its ingredients.
